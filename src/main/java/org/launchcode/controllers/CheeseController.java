@@ -42,7 +42,6 @@ public class CheeseController {
     public String displayAddCheeseForm(Model model) {
         model.addAttribute("title", "Add Cheese");
         model.addAttribute(new Cheese());
-        //model.addAttribute("cheeseTypes", CheeseType.values());
         model.addAttribute("categories", categoryDao.findAll() );
         return "cheese/add";
     }
@@ -54,6 +53,7 @@ public class CheeseController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Cheese");
+            model.addAttribute("categories", categoryDao.findAll() );
             return "cheese/add";
         }
 

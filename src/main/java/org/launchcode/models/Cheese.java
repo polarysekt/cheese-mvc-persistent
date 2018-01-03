@@ -25,7 +25,6 @@ public class Cheese {
 
     @ManyToOne
     private Category category;
-    //private CheeseType type;
 
     @ManyToMany(mappedBy = "cheeses")
     private List<Menu> menus;
