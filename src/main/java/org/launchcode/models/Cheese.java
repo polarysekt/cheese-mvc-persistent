@@ -58,7 +58,6 @@ public class Cheese {
     }
 
     public Category getCategory() {
-        //return type;
         return category;
     }
 

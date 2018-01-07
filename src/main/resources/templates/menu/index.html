@@ -13,7 +13,7 @@
 
 <ul th:unless="!${menus} or !${menus.size()}" >
     <li th:each="menu : ${menus}">
-        <a th:text="${menu.name}" th:href="'view/'+${menu.id}"></a>
+        <a th:text="${menu.name}" th:href="'menu/view/'+${menu.id}"></a>
     </li>
 </ul>
 

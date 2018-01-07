@@ -23,7 +23,7 @@ public class Menu {
     List<Cheese> cheeses;
 
     public void addItem( Cheese item ) {
-        // todo make sure this sucka don't repeat
+        // TODO: make sure this sucka don't repeat
         cheeses.add( item );
     }
 

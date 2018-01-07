@@ -10,9 +10,7 @@
 
 <p th:unless="${menu.cheeses} and ${menu.cheeses.size()}"><br/>no cheese :(</p>
 
-<!-- TODO: empty menu case -->
-
-<ul th:unless="!${menu.cheeses} or !${menu.cheeses.size()}" >
+<ul>
     <li th:each="cheese : ${menu.cheeses}">
         <span th:text="${cheese.name}"></span>
     </li>
