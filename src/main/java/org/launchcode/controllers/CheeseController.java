@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import java.lang.Iterable;
 
 import javax.validation.Valid;
 
@@ -40,9 +41,25 @@ public class CheeseController {
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String displayAddCheeseForm(Model model) {
+		Iterable<Category> cats = categoryDao.findAll();
+		int catCount = 0;
+		
+		for( Category cat : cats ) {
+			catCount++;
+		}
+		
+		if( catCount == 0 ) {
+			return "redirect:/category/add";
+		}
+		// TODO: make an intermediate variable
+        //if( categoryDao.findAll() == null ) {
+		//	return "redirect:/category/add";
+        //}
+        
         model.addAttribute("title", "Add Cheese");
         model.addAttribute(new Cheese());
-        model.addAttribute("categories", categoryDao.findAll() );
+        model.addAttribute("categories", cats); //categoryDao.findAll() );
+        
         return "cheese/add";
     }
 

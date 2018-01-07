@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
@@ -51,5 +52,23 @@ public class CategoryController {
         return "redirect:";
 
     }
+
+    @RequestMapping(value = "remove", method = RequestMethod.GET)
+    public String displayRemoveCatForm(Model model) {
+        model.addAttribute("cats", categoryDao.findAll());
+        model.addAttribute("title", "Remove Categories");
+        return "category/remove";
+    }
+
+    @RequestMapping(value = "remove", method = RequestMethod.POST)
+    public String processRemoveCatForm(@RequestParam int[] catIds) {
+
+        for (int catId : catIds) {
+            categoryDao.delete(catId);
+        }
+
+        return "redirect:";
+    }
+
 
 }
