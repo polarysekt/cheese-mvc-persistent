@@ -10,7 +10,7 @@
 
 <form th:object="${form}" method="POST">
     <div class="form-group">
-        <select>
+        <select name="cheeseId">
             <option th:each="cheese : *{cheeses}" th:value="${cheese.id}" th:text="${cheese.name}">
             </option>
         </select>
